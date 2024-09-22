@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html lang="uk" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Застосування Обміну Повідомлень для Передавання Даних між Потоками - Мова програмування Rust</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">Мова Програмування Rust</a></li><li class="chapter-item expanded affix "><a href="foreword.html">Передмова</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Вступ</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Початок</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Встановлення</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Привіт, Cargo!</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> Програмування Гри Відгадайки</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> Загальні Концепції Програмування</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> Змінні і Мутабельність</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> Типи Даних</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> Функції</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> Коментарі</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> Потік Виконання</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> Розуміння Володіння</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> Що Таке Володіння?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> Посилання та Позичання</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> Слайси</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> Використання Структур для Групування Пов'язаних Даних</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> Визначення та Створення Екземпляра Структури</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> Приклад Програми з Використанням Структур</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> Синтаксис Методів</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> Енуми та Зіставлення зі Шаблоном</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> Визначення Енума</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> Конструкція Потоку Виконання match</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> Лаконічний Потік Виконання з if let</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> Керування Щораз Більшими Проєктами із Пакетами, Крейтами та Модулями</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> Пакети та Крейти</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> Визначення Модулів для Контролю Області Видимості та Приватності</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> Шлях для Доступу до Елементів у Дереві Модулів</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> Введення Шляхів до Області Видимості з Ключовим Словом use</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> Розподіл Модулів на Різні Файли</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> Звичайні Колекції</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> Зберігання Списків Значень з Векторами</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> Зберігання Тексту у Кодуванні UTF-8 в Стрічках</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> Зберігання Ключів з Асоційованими Значеннями у Хеш-Мапах</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> Обробка Помилок</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> Невідновлювані Помилки з panic!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Відновлювані Помилки з Result</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> panic! чи не panic!</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> Узагальнені Типи, Трейти та Часи Існування</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> Узагальнені Типи Даних</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> Трейти: Визначення Спільної Поведінки</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> Перевірка Коректності Посилань із Часами Існування</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> Написання Автоматизованих Тестів</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> Як Писати Тести</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> Керування Запуском Тестів</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> Організація Тестів</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> Проєкт з Вводом/Виводом: Створення Програми з Інтерфейсом Командного Рядка</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> Приймання Аргументів Командного Рядка</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> Читання Файлу</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> Рефакторинг для Покращення Модульності та Обробки Помилок</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> Розробка Функціонала Бібліотеки із Test-Driven Development</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> Робота зі Змінними Середовища</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> Написання Повідомлень про Помилки у Помилковий Вивід замість Стандартного Виводу</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Функціональні Можливості Мови: Ітератори та Замикання</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> Замикання: Анонімні Функції, що Захоплюють Своє Середовище</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> Обробка Послідовностей Елементів з Ітераторами</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> Покращення Нашого Проєкту з Вводом/Виводом</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> Порівняння Швидкодії: Цикли Проти Ітераторів</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> Більше про Cargo та Crates.io</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> Налаштування Збірок з Release Профілями</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Публікація Крейта на Crates.io</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Робочі Області Cargo</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> Встановлення Двійкових Файлів з cargo install</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Розширення Cargo із Користувацькими Командами</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> Розумні Вказівники</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Використання Box&lt;T&gt; для Вказування на Дані в Купі</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Ставлення до Розумних Вказівників як до Звичайних Посилань з Трейтом Deref</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Виконання Коду при Очищенні з Трейтом Drop</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt; - Розумний Вказівник з Лічильником Посилань</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt; та Шаблон Внутрішньої Мутабельності</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> Цикли Посилань Можуть Спричинити Витік Пам'яті</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> Безстрашна Конкурентність</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> Використання Потоків для Одночасного Виконання Коду</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html" class="active"><strong aria-hidden="true">16.2.</strong> Застосування Обміну Повідомлень для Передавання Даних між Потоками</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> Конкурентність зі Спільним Станом</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Розширювана Конкурентність із Трейтами Sync та Send</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Особливості Об'єктоорієнтованого Програмування в Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> Характеристики Об'єктоорієнтованих Мов</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> Використання Трейт-Об'єктів, які Допускають Значення Різних Типів</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> Реалізація Об'єктоорієнтованого Шаблону Проєктування</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> Шаблони та Зіставлення Шаблонів</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> Усі Місця Можливого Використання Шаблонів</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Спростовуваність: Чи Може Шаблон Бути Невідповідним</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> Синтаксис Шаблонів</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> Просунуті Можливості</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> Небезпечний Rust</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> Поглиблено про Трейти</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> Поглиблено про Типи</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> Поглиблено про Функції та Замикання</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> Макроси</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> Останній Проєкт: Збірка Багатопотокового Вебсервера</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> Збірка Однопотокового Вебсервера</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> Перетворюємо Наш Однопотоковий Сервер на Багатопотоковий</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> Плавне Вимкнення та Очищення</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> Додатки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - Ключові Слова</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - Оператори та Символи</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - Похідні Трейти</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - Корисні Інструменти Розробки</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - Видання</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - Переклади Книги</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - як Розробляється Rust і "Нічний Rust"</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Мова програмування Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="Застосування-Обміну-Повідомлень-для-Передавання-Даних-між-Потоками"><a class="header" href="#Застосування-Обміну-Повідомлень-для-Передавання-Даних-між-Потоками">Застосування Обміну Повідомлень для Передавання Даних між Потоками</a></h2>
+<p>Одним із набираючих популярність підходів для забезпечення безпечної конкурентності є <em>обмін повідомленнями</em>, коли потоки або ж актори комунікують надсилаючи один одному повідомлення, що містять дані. Ось основна ідея, виражена в слогані з [документації мови програмування Go](https://go. dev/doc/effective_go#concurrency): &quot;Не комунікуйте за допомогою спільної памʼяті; замість цього, діліться памʼяттю комунікуючи.&quot;</p>
+<p>Для досягнення конкурентності за допомогою обміну повідомленнями, стандартна бібліотека Rust надає імплементацію <em>каналів</em>. Канал - це загальна концепція програмування, основна ідея якої полягає в тому, що дані надсилаються з одного потоку в інший.</p>
+<p>Ви можете уявити канал в програмуванні схожим на напрямлений канал води, такий як струмок чи річка. Якщо ви помістите щось на кшталт гумової качечки в річку, вона попливе вниз за течією аж до кінця водного шляху.</p>
+<p>Канал має дві половини: передавач (transmitter) і отримувач (receiver). Передавач - це місце, де ви пускаєте за течією гумових качечок, а отримувач - це місце куди гумова качечка потрапляє в кінці течії. Одна частина вашого коду викликає методи передавача з даними, які ви хочете відправити, а інша частина перевіряє отримувач на наявність отриманих повідомлень. Канал вважається <em>закритим</em> якщо передавач або ж отримувач були видалені.</p>
+<p>Надалі, ми попрацюємо над програмою, яка має один потік для генерації значень і надсилання їх по каналу, а інший потік отримуватиме значення і виводитиме їх на екран. Ми відправлятимемо прості значення між потоками використовуючи канали для ілюстрації даного функціоналу. Як тільки ви познайомитесь з даним підходом, ви зможете використовувати канали для будь-яких потоків, яким потрібно комунікувати між собою, таким як чат-системи або ж системи, де багато потоків виконують частини обчислень і надсилають результати в один потік, котрий агрегує ці результати.</p>
+<p>Спочатку, в Блоці коду 16-6, ми створимо канал, але не будемо нічого з ним робити. Зверніть увагу, що даний приклад поки що не скомпілюється, оскільки Rust не може визначити які типи значень ми хочемо надсилати через канал.</p>
+<p><span class="filename">Файл: src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">use std::sync::mpsc;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+}
+</code></pre>
+<p><span class="caption">Блок коду 16-6: Створення каналу і присвоєння двох його половин в <code>tx</code> і <code>rx</code></span></p>
+<p>Ми створюємо новий канал за допомогою функції <code>mpsc::channel</code>, <code>mpsc</code> означає <em>multiple producer, single consumer</em> (<em>декілька виробників, один споживач</em>). Словом, спосіб, в який стандартна бібліотека Rust імплементує канали означає, що канал може мати декілька <em>відправляючих</em> кінців, які створюють значення, але лише один <em>споживаючий</em> кінець, який споживає значення. Уявіть декілька струмків, що зливаються в одну велику річку: все що буде відправлено за течією будь-якого з струмків в кінці-кінців потрапить в річку. Наразі ми почнемо з одного виробника, але ми додамо ще декілька коли змусимо цей приклад працювати.</p>
+<p>Функція <code>mpsc::channel</code> повертає кортеж, першим елементом якого є відправляючий кінець - передавач, а другим елементом є отримуючий кінець - отримувач. Абревіатури <code>tx</code> і <code>rx</code> традиційно використовуються в багатьох сферах для позначення <em>передавача (transmitter)</em> та <em>отримувача (receiver)</em> відповідно, тому ми називаємо наші змінні таким чином, щоб позначити відповідні кінці каналу. Ми використовуємо інструкцію <code>let</code> з шаблоном, що деструктуризує кортежі; ми обговоримо використання шаблонів в інструкціях <code>let</code> та деструктуризацію в Розділі 18. Наразі ж знайте, що використання інструкції <code>let</code> в такий спосіб є зручним підходом для витягування (extract) частин кортежу, який повертає після виконання <code>mpsc::channel</code>.</p>
+<p>Давайте перемістимо передавач в створений потік і попросимо його надіслати одну стрічку, щоб даний потік комунікував з основним потоком, як показано в Блоці коду 16-7. Це як помістити гумову качечку в річку вище за течією або ж надіслати чат-повідомлення з одного потоку в інший.</p>
+<p><span class="filename">Файл: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from(&quot;hi&quot;);
+        tx.send(val).unwrap();
+    });
+}
+</code></pre></pre>
+<p><span class="caption">Блок коду 16-7: Переміщення <code>tx</code> в створений потік і відправка &quot;hi&quot;</span></p>
+<p>Знову ж таки, ми використовуємо <code>thread::spawn</code> щоб створити новий потік і потім використовуємо <code>move</code> щоб помістити <code>tx</code> всередину замикання, адже таким чином потік володітиме <code>tx</code>. Створений потік має володіти передавачем, щоб мати можливість надсилати повідомлення по каналу. Передавач має метод <code>send</code>, котрий приймає значення, яке ми хочемо надіслати. Метод <code>send</code> повертає <code>Result&lt;T, E&gt;</code>, отже, якщо отримувач був видалений й немає куди надіслати значення, операція поверне помилку. В даному прикладі, ми викликаємо <code>unwrap</code>, щоб наш код запанікував у випадку помилки. Однак в справжньому додатку ми б обробили помилки належним чином: поверніться до Розділу 9 щоб переглянути стратегії належної обробки помилок.</p>
+<p>В Блоці коду 16-8 ми в основному потоці отримаємо/дістанемо значення з отримувача. Це як дістати гумову качечку з води в кінці річки або ж отримати повідомлення в чаті.</p>
+<p><span class="filename">Файл: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from(&quot;hi&quot;);
+        tx.send(val).unwrap();
+    });
+
+    let received = rx.recv().unwrap();
+    println!(&quot;Got: {}&quot;, received);
+}
+</code></pre></pre>
+<p><span class="caption">Блок коду 16-8: Отримання значення &quot;hi&quot; в основному потоці та вивід його на екран</span></p>
+<p>Отримувач має два корисні методі: <code>recv</code> та <code>try_recv</code>. Ми використовуємо <code>recv</code>, скорочено від <em>receive</em>, який заблокує виконання основного потоку і чекатиме доки значення буде надіслане в канал. Як тільки значення буде надіслане, <code>recv</code> поверне його, обернувши в <code>Result&lt;T, E&gt;</code>. Коли передавач закриється, <code>recv</code> поверне помилку, яка сигналізує про те, що значення більше не надходитимуть.</p>
+<p>Метод <code>try_recv</code> не блокує основний потік, а натомість одразу повертає <code>Result&lt;T, E&gt;</code>: значення <code>Ok</code>, котре містить повідомлення, якщо воно доступне, і <code>Err</code> якщо цього разу немає жодних повідомлень. Використання <code>try_recv</code> корисне якщо потік має виконувати іншу роботу, очікуючи на повідомлення: ми можемо написати цикл, котрий періодично викликає <code>try_recv</code>, обробляє повідомлення, якщо воно доступне, а в іншому випадку деякий час виконує іншу роботу аж до наступної перевірки.</p>
+<p>Ми використали <code>recv</code> в цьому прикладі для простоти; ми не маємо жодної іншої роботи для основного потоку, окрім очікування повідомлень, тому блокування основного потоку є доречним/виправданим.</p>
+<p>Коли ми запустимо код з Блоку коду 16-8, ми побачимо, що значення виводиться з основного потоку:</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">Got: hi
+</code></pre>
+<p>Ідеально!</p>
+<h3 id="Канали-та-Передача-Володіння"><a class="header" href="#Канали-та-Передача-Володіння">Канали та Передача Володіння</a></h3>
+<p>Правила володіння відіграють важливу роль в обміні повідомленнями, оскільки вони допомагають вам писати безпечний конкурентний код. Запобігання помилкам в конкурентних програмах - це перевага, яку надає мислення в термінах володіння в ваших Rust програмах. Давайте проведемо експеримент для демонстрації того як канали та володіння працюють разом для запобігання проблемам: ми спробуємо використати значення <code>val</code> в створеному потоці вже <em>після</em> того, як ми надіслали його далі по каналу. Спробуйте скомпілювати код з Блоку коду 16-9 щоб побачити чому він не пропускається компілятором:</p>
+<p><span class="filename">Файл: src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from(&quot;hi&quot;);
+        tx.send(val).unwrap();
+        println!(&quot;val is {}&quot;, val);
+    });
+
+    let received = rx.recv().unwrap();
+    println!(&quot;Got: {}&quot;, received);
+}
+</code></pre>
+<p><span class="caption">Блок коду 16-9: Спроба використати <code>val</code> після того, як воно було надіслане в канал</span></p>
+<p>Тут ми намагаємось вивести <code>val</code> на екран вже після того як ми надіслали його по каналу за допомогою <code>tx.send</code>. Дозволяти таке було б поганою ідеєю: як тільки значення буде надіслане в інший потік, такий потік може модифікувати або ж навіть видалити значення, перш ніж ми спробуємо використати його знову. Потенційно, зміни в іншому потоці можуть привести до помилок або ж неочікуваних результатів через суперечливі (inconsistent) або ж неіснуючі дані. Однак, Rust видасть помилку якщо ми спробуємо скомпілювати код з Блоку коду 16-9:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling message-passing v0.1.0 (file:///projects/message-passing)
+error[E0382]: borrow of moved value: `val`
+  --&gt; src/main.rs:10:31
+   |
+8  |         let val = String::from(&quot;hi&quot;);
+   |             --- move occurs because `val` has type `String`, which does not implement the `Copy` trait
+9  |         tx.send(val).unwrap();
+   |                 --- value moved here
+10 |         println!(&quot;val is {}&quot;, val);
+   |                               ^^^ value borrowed here after move
+   |
+   = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `message-passing` due to previous error
+</code></pre>
+<p>Наша помилка в роботі з конкурентністю спричинила помилку компіляції. Функція <code>send</code> бере володіння над своїм параметром, а коли значення переміщується (moved), отримувач бере над ним володіння. Це не дає нам випадково повторно використати значення після того як ми його надіслали; правила володіння перевіряють чи все гаразд.</p>
+<h3 id="Відправлення-Декількох-Значень-та-Спостереження-за-Очікуванням-Отримувача"><a class="header" href="#Відправлення-Декількох-Значень-та-Спостереження-за-Очікуванням-Отримувача">Відправлення Декількох Значень та Спостереження за Очікуванням Отримувача</a></h3>
+<p>Код в Блоці коду 16-8 скомпілювався і виконався, але він не продемонстрував, що два окремі потоки спілкуються між собою через канал. В Блоці коду 16-10 ми зробили деякі зміни, які підтвердять, що код в Блоці коду 16-8 виконується конкурентно: створений потік тепер відсилатиме декілька повідомлень і робитиме секундну паузу між кожним повідомленням.</p>
+<p><span class="filename">Файл: src/main.rs</span></p>
+<pre><code class="language-rust noplayground">use std::sync::mpsc;
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let vals = vec![
+            String::from(&quot;hi&quot;),
+            String::from(&quot;from&quot;),
+            String::from(&quot;the&quot;),
+            String::from(&quot;thread&quot;),
+        ];
+
+        for val in vals {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    for received in rx {
+        println!(&quot;Got: {}&quot;, received);
+    }
+}
+</code></pre>
+<p><span class="caption">Блок коду 16-10: Відправка декількох повідомлень із паузою між відправками</span></p>
+<p>Цього разу створений потік має вектор стрічок, які ми хочемо надіслати в основний потік. Ми ітеруємось по ним, надсилаючи кожну стрічку окремо, і робимо паузу між кожною відправкою, викликаючи функцію <code>thread::sleep</code> із значенням <code>Duration</code> в 1 секунду.</p>
+<p>В основному потоці, ми більше не викликаємо функцію <code>recv</code> явно: замість цього ми розглядаємо <code>rx</code> як ітератор. Отримуючи значення, ми виводимо його на екран. Якщо канал закриється, ітерування припиниться.</p>
+<p>Під час виконання коду із Блоку коду 16-10, ви маєте побачити наступний вивід із 1-секундною паузою між кожним рядком:</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">Got: hi
+Got: from
+Got: the
+Got: thread
+</code></pre>
+<p>Оскільки ми не маємо жодного коду, що призупиняє або ж відкладає виконання циклу <code>for</code> в основному потоці, ми можемо сказати, що основний потік очікує отримання значень із створеного потоку.</p>
+<h3 id="Створення-Декількох-Виробників-із-Клонуванням-Передавача"><a class="header" href="#Створення-Декількох-Виробників-із-Клонуванням-Передавача">Створення Декількох Виробників із Клонуванням Передавача</a></h3>
+<p>Раніше ми вже згадували, що <code>mpsc</code> - це абревіатура для <em>multiple producer, single consumer</em> (<em>кілька виробників, один споживач</em>). Давайте використаємо <code>mpsc</code> і розширимо код в Блоці коду 16-10 щоб створити кілька потоків, котрі надсилають дані одному й тому ж отримувачу. Ми можемо зробити це склонувавши передавач, як показано в Блоці коду 16-11:</p>
+<p><span class="filename">Файл: src/main.rs</span></p>
+<pre><code class="language-rust noplayground"><span class="boring">use std::sync::mpsc;
+</span><span class="boring">use std::thread;
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span>    // --snip--
+
+    let (tx, rx) = mpsc::channel();
+
+    let tx1 = tx.clone();
+    thread::spawn(move || {
+        let vals = vec![
+            String::from(&quot;hi&quot;),
+            String::from(&quot;from&quot;),
+            String::from(&quot;the&quot;),
+            String::from(&quot;thread&quot;),
+        ];
+
+        for val in vals {
+            tx1.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    thread::spawn(move || {
+        let vals = vec![
+            String::from(&quot;more&quot;),
+            String::from(&quot;messages&quot;),
+            String::from(&quot;for&quot;),
+            String::from(&quot;you&quot;),
+        ];
+
+        for val in vals {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    for received in rx {
+        println!(&quot;Got: {}&quot;, received);
+    }
+
+    // --snip--
+<span class="boring">}
+</span></code></pre>
+<p><span class="caption">Блок коду 16-11: Відправка декількох повідомлень з кількох виробників (producers)</span></p>
+<p>Цього разу, перед тим як ми створимо перший потік, ми викликаємо <code>clone</code> на передавачі. Це дасть нам новий передавач, який ми зможемо потім передати в створений потік. Ми передаємо оригінальний передавач в другий створений потік. Це дає нам два потоки, кожен з яких надсилає різні повідомленнями одному отримувачу.</p>
+<p>Коли ви виконаєте код, ваш вивід має виглядати приблизно так:</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">Got: hi
+Got: more
+Got: from
+Got: messages
+Got: for
+Got: the
+Got: thread
+Got: you
+</code></pre>
+<p>Ви можете бачити значення в іншому порядку, залежно від вашої системи. Саме це робить конкурентність цікавою, але й складною одночасно. Якщо ви поекспериментуєте з <code>thread::sleep</code>, підставляючи різні значення в різні потоки, кожен запуск буде ще більш недетермінованим і щоразу створюватиме різний вивід.</p>
+<p>Тепер, коли ми поглянули на те, як працюють канали, давайте розглянемо інший метод конкурентності.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch16-01-threads.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch16-03-shared-state.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch16-01-threads.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch16-03-shared-state.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
